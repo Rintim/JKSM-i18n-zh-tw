@@ -1,3 +1,8 @@
+# 原仓库地址https://github.com/J-D-K/JKSM
+
+# 更新内容
+* 增加简体中文（需要字库支持）
+
 # JKSM for 3DS
 JKSM or JK's Save Manager for 3DS.
 * Dump and Restore save data for 3DS titles
