@@ -25,14 +25,14 @@ int state = MAIN_MENU, prev = MAIN_MENU;
 //Stolen 3Dbrew descriptions
 static const std::string sharedDesc[] =
 {
-    "主页菜单尝试在启动期间打开此存档，如果 FS：OpenArchive 不返回错误主页菜单后启动系统传输应用程序。主页菜单实际上并不使用此存档，只是检查它是否存在。",
-    "NAND JPEG/MPO 文件和 phtcache.bin 从相机应用程序存储在这里。这也包含上传数据.dat。",
-    "声音应用程序中的 NAND M4A 文件存储在这里。",
-    "适用于用于通知的 SpotPass 内容存储。",
-    "包含 idb. dat， idbt. dat， gamecoin. dat， ubll. lst， CFL_DB. dat， CFL_OldDB. dat.这些文件包含 Miis 和一些与播放使用记录相关的数据（包括缓存的 ICN 数据）。",
+    "主頁選單嘗試在啟動期間打開此儲存數據，如果 FS：OpenArchive 不返回錯誤主頁選單後啟動系統傳輸程式。主頁選單實際上並不使用此儲存數據，只是檢查它是否存在。",
+    "NAND JPEG/MPO 檔案和 phtcache.bin 從相機程式儲存在此。這也包含上傳數據.dat。",
+    "聲音程式中的 NAND M4A 檔案儲存在此。",
+    "適用於用於通知的悄然通訊內容儲存。",
+    "包含 idb. dat， idbt. dat， gamecoin. dat， ubll. lst， CFL_DB. dat， CFL_OldDB. dat.這些檔案包含 Miis 和一些與播放使用記錄相關的數據（包括緩存的 ICN 數據）。",
     "包含 bashotorya. dat 和 bashotorya2. dat 。",
-    "主页菜单的 SpotPass 内容数据存储。",
-    "包含 版本列表.dat ，由主页菜单用于添加 7.0.0-13 的软件更新通知。"
+    "主頁選單的悄然連結檔案數據儲存。",
+    "包含 版本列表.dat ，由主頁選單用於添加 7.0.0-13 的程式更新通知。"
 };
 
 namespace ui
@@ -61,26 +61,26 @@ namespace ui
 
     void prepMenus()
     {
-        mainMenu.addOpt("应用", 0);
-        mainMenu.addOpt("系统应用", 0);
-        mainMenu.addOpt("共享额外数据", 0);
-        mainMenu.addOpt("重新加载应用列表", 0);
-        mainMenu.addOpt("修改游戏币", 0);
+        mainMenu.addOpt("程式", 0);
+        mainMenu.addOpt("系統程式", 0);
+        mainMenu.addOpt("共享追加數據", 0);
+        mainMenu.addOpt("重新加載程式列表", 0);
+        mainMenu.addOpt("修改遊戲幣", 0);
         mainMenu.addOpt("退出", 0);
 
         //Title menu
         loadTitleMenu();
         loadNandMenu();
 
-        backupMenu.addOpt("保存存档", 0);
-        backupMenu.addOpt("删除保存存档", 0);
-        backupMenu.addOpt("额外数据", 0);
-        backupMenu.addOpt("删除额外数据", 0);
+        backupMenu.addOpt("儲存數據", 0);
+        backupMenu.addOpt("刪除儲存數據", 0);
+        backupMenu.addOpt("追加數據", 0);
+        backupMenu.addOpt("刪除追加數據", 0);
         backupMenu.addOpt("返回", 0);
 
-        nandBackupMenu.addOpt("系统存档", 0);
-        nandBackupMenu.addOpt("额外数据", 0);
-        nandBackupMenu.addOpt("BOSS额外数据", 0);
+        nandBackupMenu.addOpt("系统儲存數據", 0);
+        nandBackupMenu.addOpt("追加數據", 0);
+        nandBackupMenu.addOpt("BOSS追加數據", 0);
         nandBackupMenu.addOpt("返回", 0);
 
         sharedMenu.addOpt("E0000000", 0);
@@ -114,7 +114,7 @@ namespace ui
                     if(!data::titles.empty())
                         state = TITLE_MENU;
                     else
-                        ui::showMessage("没有发现Titles，请重新加载Titles！");
+                        ui::showMessage("沒有發現程式，請重新加載程式！");
                     break;
 
                 case 1:
@@ -147,7 +147,7 @@ namespace ui
 
         gfx::frameBegin();
         gfx::frameStartTop();
-        drawTopBar("JKSM - 简体中文汉化版 更新时间：8月19日");
+        drawTopBar("JKSM I18N-zh-tw");
         mainMenu.draw(40, 78, 0xFFFFFFFF, 320, false);
         gfx::frameStartBot();
         gfx::frameEnd();
@@ -165,15 +165,15 @@ namespace ui
         }
 
         //Much needed Jump button
-        static ui::button jumpTo("跳转", 0, 208, 320, 32);
+        static ui::button jumpTo("跳轉", 0, 208, 320, 32);
         //Dump all button
-        static ui::button dumpAll("储存所有存档", 0, 174, 320, 32);
+        static ui::button dumpAll("儲存所有數據", 0, 174, 320, 32);
         //Blacklist button
-        static ui::button bl("添加到黑名单 \ue002", 0, 140, 320, 32);
+        static ui::button bl("添加到黑名單 \ue002", 0, 140, 320, 32);
         //Selected Dump
-        static ui::button ds("储存已选择 \ue003", 0, 106, 320, 32);
+        static ui::button ds("儲存已選擇 \ue003", 0, 106, 320, 32);
         //Favorite
-        static ui::button fav("添加到喜爱 \ue005", 0, 72, 320, 32);
+        static ui::button fav("添加到喜愛 \ue005", 0, 72, 320, 32);
 
         titleMenu.handleInput(down, held);
 
@@ -199,7 +199,7 @@ namespace ui
         }
         else if(down & KEY_X || bl.getEvent() == BUTTON_RELEASED)
         {
-            std::string confString = "你确定要添加'" + util::toUtf8(data::titles[titleMenu.getSelected()].getTitle()) + "'到黑名单吗？";
+            std::string confString = "即將添加'" + util::toUtf8(data::titles[titleMenu.getSelected()].getTitle()) + "'到黑名單，是否繼續？";
             if(confirm(confString))
                 data::blacklistAdd(data::titles[titleMenu.getSelected()]);
         }
@@ -239,7 +239,7 @@ namespace ui
         }
         else if(jumpTo.getEvent() == BUTTON_RELEASED)
         {
-            char16_t getChar = util::toUtf16(util::getString("请输入要跳转的字母", false))[0];
+            char16_t getChar = util::toUtf16(util::getString("請輸入要跳轉的字母", false))[0];
             if(getChar != 0x00)
             {
                 unsigned i;
@@ -265,7 +265,7 @@ namespace ui
 
         gfx::frameBegin();
         gfx::frameStartTop();
-        drawTopBar("选择一个Titles");
+        drawTopBar("選擇一個程式");
         titleMenu.draw(40, 24, 0xFFFFFFFF, 320, false);
         gfx::frameStartBot();
         data::titles[titleMenu.getSelected()].drawInfo(8, 8);
@@ -311,7 +311,7 @@ namespace ui
                     break;
 
                 case 1:
-                    if(confirm(std::string("您确定要删除此游戏的保存数据吗？\n这是不可逆转的！")) && fs::openArchive(data::curData, ARCHIVE_USER_SAVEDATA, true))
+                    if(confirm(std::string("即將刪除此程式的儲存數據\n這是不可逆轉的！\n是否繼續？")) && fs::openArchive(data::curData, ARCHIVE_USER_SAVEDATA, true))
                     {
                         FSUSER_DeleteDirectoryRecursively(fs::getSaveArch(), fsMakePath(PATH_ASCII, "/"));
                         fs::commitData(ARCHIVE_USER_SAVEDATA);
@@ -331,14 +331,14 @@ namespace ui
 
                 case 3:
                     {
-                        std::string confStr = "您确定要删除'" + util::toUtf8(data::curData.getTitle()) + "'的额外保存数据吗？";
+                        std::string confStr = "即將刪除" + util::toUtf8(data::curData.getTitle()) + "'的捉追加儲存数据，是否繼續？";
                         if(confirm(confStr))
                         {
                             FS_ExtSaveDataInfo del = { MEDIATYPE_SD, 0, 0, data::curData.getExtData(), 0 };
 
                             Result res = FSUSER_DeleteExtSaveData(del);
                             if(R_SUCCEEDED(res))
-                                showMessage("额外的保存数据已删除。");
+                                showMessage("追加儲存數據已删除。");
                         }
                     }
                     break;
@@ -380,7 +380,7 @@ namespace ui
 
         gfx::frameBegin();
         gfx::frameStartTop();
-        drawTopBar("请选择一个NAND Title");
+        drawTopBar("請選擇一個NAND程式");
         nandMenu.draw(40, 24, 0xFFFFFFFF, 320, false);
         gfx::frameStartBot();
         data::nand[nandMenu.getSelected()].drawInfo(8, 8);
@@ -462,7 +462,7 @@ namespace ui
                 else if(held & KEY_R)
                     newFolder = util::toUtf16(util::getDateString(util::DATE_FMT_YMD));
                 else
-                    newFolder = util::safeString(util::toUtf16(util::getString("Enter a new folder name", true)));
+                    newFolder = util::safeString(util::toUtf16(util::getString("輸入新資料夾名稱", true)));
 
                 if(!newFolder.empty())
                 {
@@ -480,7 +480,7 @@ namespace ui
                 sel--;
 
                 fs::dirList titleDir(fs::getSDMCArch(), util::createPath(data::curData, fs::getSaveMode()));
-                std::string confStr = "是否覆盖'" + util::toUtf8(titleDir.getItem(sel)) + "'?";
+                std::string confStr = "是否覆蓋'" + util::toUtf8(titleDir.getItem(sel)) + "'?";
                 if(ui::confirm(confStr))
                 {
                     std::u16string fullPath = util::createPath(data::curData, fs::getSaveMode()) + titleDir.getItem(sel);
@@ -500,7 +500,7 @@ namespace ui
         {
             sel--;
             fs::dirList titleDir(fs::getSDMCArch(), util::createPath(data::curData, fs::getSaveMode()));
-            std::string confStr = "你确定要恢复'" + util::toUtf8(titleDir.getItem(sel)) + "'吗?";
+            std::string confStr = "即將恢復'" + util::toUtf8(titleDir.getItem(sel)) + "'，是否繼續？";
             if(confirm(confStr))
             {
                 std::u16string restPath = util::createPath(data::curData, fs::getSaveMode()) + titleDir.getItem(sel) + util::toUtf16("/");
@@ -516,7 +516,7 @@ namespace ui
         {
             sel--;
             fs::dirList titleDir(fs::getSDMCArch(), util::createPath(data::curData, fs::getSaveMode()));
-            std::string confStr = "你确定要删除'" + util::toUtf8(titleDir.getItem(sel)) + "'吗?";
+            std::string confStr = "即將刪除'" + util::toUtf8(titleDir.getItem(sel)) + "'，是否繼續？";
             if(confirm(confStr))
             {
                 std::u16string delPath = util::createPath(data::curData, fs::getSaveMode()) + titleDir.getItem(sel);
@@ -540,10 +540,10 @@ namespace ui
 
         gfx::frameBegin();
         gfx::frameStartTop();
-        drawTopBar("选择一个文件夹");
+        drawTopBar("選擇一個資料夾");
         folderMenu.draw(40, 24, 0xFFFFFFFF, 320, false);
         gfx::frameStartBot();
-        gfx::drawText("\ue000 = 选择\n\ue003 = 恢复\n\ue002 = 删除\n\ue001 = 返回\nSelect = 文件模式", 16, 16, 0xFFFFFFFF);
+        gfx::drawText("\ue000 = 選擇\n\ue003 = 恢復\n\ue002 = 刪除\n\ue001 = 返回\nSelect = 檔案模式", 16, 16, 0xFFFFFFFF);
         gfx::frameEnd();
     }
 
@@ -688,7 +688,7 @@ namespace ui
 
         gfx::frameBegin();
         gfx::frameStartTop();
-        drawTopBar("额外数据");
+        drawTopBar("追加儲存數據");
         sharedMenu.draw(40, 60, 0xFFFFFFFF, 320, false);
         gfx::frameStartBot();
         gfx::drawTextWrap(sharedDesc[sharedMenu.getSelected()], 0, 0, 240, 0xFFFFFFFF);

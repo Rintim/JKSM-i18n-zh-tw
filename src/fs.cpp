@@ -116,7 +116,7 @@ namespace fs
         if(R_FAILED(res))
         {
             if(error)
-                ui::showMessage("无法打开存档。此Titles的保存数据类型可能不存在\nError: 0x%08X", (unsigned)res);
+                ui::showMessage("無法打開儲存數據。此程式的儲存數據類型可能不存在\nError: 0x%08X", (unsigned)res);
             return false;
         }
 
@@ -129,7 +129,7 @@ namespace fs
         {
             Result res = FSUSER_ControlArchive(saveArch, ARCHIVE_ACTION_COMMIT_SAVE_DATA, NULL, 0, NULL, 0);
             if(res)
-                ui::showMessage("无法提交保存数据！\nError: 0x%08X", (unsigned)res);
+                ui::showMessage("無法提交儲存數據！\nError: 0x%08X", (unsigned)res);
         }
     }
 
@@ -143,7 +143,7 @@ namespace fs
 
             res = FSUSER_ControlSecureSave(SECURESAVE_ACTION_DELETE, &in, 8, &out, 1);
             if(R_FAILED(res))
-                ui::showMessage("无法删除安全值。\nError: 0x%08X", (unsigned)res);
+                ui::showMessage("无法刪除安全值。\nError: 0x%08X", (unsigned)res);
         }
     }
 
@@ -358,12 +358,12 @@ namespace fs
 
         if(!in.isOpen() || !out.isOpen())
         {
-            ui::showMessage("打开其中一个文件时出错。\nIn: 0x%08X\nOut: 0x%08X", in.getError(), out.getError());
+            ui::showMessage("打開其中一個檔案時出錯 \nIn: 0x%08X\nOut: 0x%08X", in.getError(), out.getError());
             return;
         }
 
         uint8_t *buff = new uint8_t[buff_size];
-        std::string copyString = "正在复制'" + util::toUtf8(from) + "'...";
+        std::string copyString = "正在拷貝'" + util::toUtf8(from) + "'......";
         ui::progressBar prog((uint32_t)in.getSize());
         do
         {
@@ -375,7 +375,7 @@ namespace fs
 
             gfx::frameBegin();
             gfx::frameStartTop();
-            ui::drawTopBar("储存中...");
+            ui::drawTopBar("正在储存中......");
             gfx::frameStartBot();
             prog.draw(copyString);
             gfx::frameEnd();
@@ -423,12 +423,12 @@ namespace fs
 
         if(!in.isOpen() || !out.isOpen())
         {
-            ui::showMessage("打开其中一个文件时出错。\nIn: 0x%08X\nOut: 0x%08X", in.getError(), out.getError());
+            ui::showMessage("打開其中一個檔案時出錯。\nIn: 0x%08X\nOut: 0x%08X", in.getError(), out.getError());
             return;
         }
 
         uint8_t *buff = new uint8_t[buff_size];
-        std::string copyString = "正在复制'" + util::toUtf8(from) + "'...";
+        std::string copyString = "正在拷貝'" + util::toUtf8(from) + "'......";
         ui::progressBar prog(in.getSize());
         do
         {
@@ -440,7 +440,7 @@ namespace fs
 
             gfx::frameBegin();
             gfx::frameStartTop();
-            ui::drawTopBar("还原中...");
+            ui::drawTopBar("復原中......");
             gfx::frameStartBot();
             prog.draw(copyString);
             gfx::frameEnd();
@@ -490,7 +490,7 @@ namespace fs
         ui::progressBar prog(data::titles.size());
         for(unsigned i = 0; i < data::titles.size(); i++)
         {
-            std::string copyStr = "备份中'" + util::toUtf8(data::titles[i].getTitle()) + "'...";
+            std::string copyStr = "備份'" + util::toUtf8(data::titles[i].getTitle()) + "'中......";
             prog.update(i);
 
             //Sue me

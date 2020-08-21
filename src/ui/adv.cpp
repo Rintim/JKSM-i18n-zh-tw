@@ -39,7 +39,7 @@ bool confirmTransfer(const std::u16string& from, const std::u16string& to, int w
             break;
     }
 
-    std::string conf = "是否要复制 '" + fromDrive + util::toUtf8(from) + "' 到 '" + toDrive + util::toUtf8(to) + "'？";
+    std::string conf = "是否要拷貝 '" + fromDrive + util::toUtf8(from) + "' 到 '" + toDrive + util::toUtf8(to) + "'？";
 
     return ui::confirm(conf);
 }
@@ -58,7 +58,7 @@ bool confirmDelete(const std::u16string& del, int way)
             break;
     }
 
-    std::string conf = "是否删除 '" + drive + util::toUtf8(del) + "'？";
+    std::string conf = "是否刪除 '" + drive + util::toUtf8(del) + "'？";
     return ui::confirm(conf);
 }
 
@@ -254,7 +254,7 @@ void performCopyOps()
         case 3:
             {
                 std::u16string newDir;
-                if(!(newDir = util::toUtf16(util::getString("新文件夹", false))).empty())
+                if(!(newDir = util::toUtf16(util::getString("新資料夾", false))).empty())
                 {
                     switch(advPrev)
                     {
@@ -311,11 +311,11 @@ namespace ui
         util::copyDirlistToMenu(sdList, sdMenu);
 
         copyMenu.reset();
-        copyMenu.addOpt("复制到", 0);
-        copyMenu.addOpt("删除", 0);
+        copyMenu.addOpt("拷貝到", 0);
+        copyMenu.addOpt("刪除", 0);
         copyMenu.addOpt("重命名", 0);
-        copyMenu.addOpt("制作一个新文件夹", 0);
-        copyMenu.addOpt("删除存档", 0);
+        copyMenu.addOpt("新建資料夾", 0);
+        copyMenu.addOpt("刪除儲存數據", 0);
         copyMenu.addOpt("返回", 0);
     }
 
@@ -444,7 +444,7 @@ namespace ui
         saveMenu.draw(40, 32, 0xFFFFFFFF, 320, false);
         if(advMenuCtrl == 2 && advPrev == 0)
         {
-            copyMenu.editOpt(0, "复制到SD卡");
+            copyMenu.editOpt(0, "拷貝到SD Card");
             C2D_DrawRectSolid(144, 62, 0.5f, 112, 120, 0xFFEBEBEB);
             copyMenu.draw(152, 70, 0xFF000000, 96, true);
         }
@@ -453,7 +453,7 @@ namespace ui
         sdMenu.draw(0, 24, 0xFFFFFFFF, 320, false);
         if(advMenuCtrl == 2 && advPrev == 1)
         {
-            copyMenu.editOpt(0, "复制存档");
+            copyMenu.editOpt(0, "拷貝儲存數據");
             C2D_DrawRectSolid(100, 62, 0.5f, 112, 120, 0xFFEBEBEB);
             copyMenu.draw(108, 70, 0xFF000000, 96, true);
         }

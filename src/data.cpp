@@ -200,11 +200,11 @@ namespace data
         switch(getMedia())
         {
             case MEDIATYPE_GAME_CARD:
-                media = "游戏卡";
+                media = "游戏 Card";
                 break;
 
             case MEDIATYPE_SD:
-                media = "SD卡";
+                media = "SD Card";
                 break;
 
             case MEDIATYPE_NAND:
@@ -213,7 +213,7 @@ namespace data
         }
 
         char tmp[64];
-        sprintf(tmp, "储存位置: %s\n代码前置: 0x%08X\n游戏代码: 0x%08X", media.c_str(), (unsigned)getHigh(), (unsigned)getLow());
+        sprintf(tmp, "儲存位置: %s\n代碼前置: 0x%08X\n遊戲代碼: 0x%08X", media.c_str(), (unsigned)getHigh(), (unsigned)getLow());
         gfx::drawText(tmp, x, y, 0xFFFFFFFF);
     }
 
@@ -302,7 +302,7 @@ namespace data
                 gfx::frameStartTop();
                 ui::drawTopBar("加载中...");
                 gfx::frameStartBot();
-                prog.draw("正在加载SD内安装的Titles...");
+                prog.draw("正在加載SD Card裏的程式中......");
                 gfx::frameEnd();
             }
             delete[] ids;
@@ -340,7 +340,7 @@ namespace data
                 gfx::frameStartTop();
                 ui::drawTopBar("加载中...");
                 gfx::frameStartBot();
-                prog.draw("正在加载NAND内安装的Titles...");
+                prog.draw("正在加載NAND裏的程式中......");
                 gfx::frameEnd();
 
             }

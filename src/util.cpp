@@ -241,7 +241,7 @@ namespace util
             playCoin.seek(0x4, fs::seek_beg);
             coinAmount = playCoin.getByte() | playCoin.getByte() << 8;
 
-            coinAmount = getInt("输入0到300之间的数字", coinAmount, 300);
+            coinAmount = getInt("請輸入0至300間的一個整數", coinAmount, 300);
             if(coinAmount != -1)
             {
                 playCoin.seek(-2, fs::seek_cur);
