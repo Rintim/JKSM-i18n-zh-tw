@@ -358,7 +358,7 @@ namespace fs
 
         if(!in.isOpen() || !out.isOpen())
         {
-            ui::showMessage("打開其中一個檔案時出錯 \nIn: 0x%08X\nOut: 0x%08X", in.getError(), out.getError());
+            ui::showMessage("打開其中一個档案時出錯 \nIn: 0x%08X\nOut: 0x%08X", in.getError(), out.getError());
             return;
         }
 
@@ -423,7 +423,7 @@ namespace fs
 
         if(!in.isOpen() || !out.isOpen())
         {
-            ui::showMessage("打開其中一個檔案時出錯。\nIn: 0x%08X\nOut: 0x%08X", in.getError(), out.getError());
+            ui::showMessage("打開其中一個档案時出錯。\nIn: 0x%08X\nOut: 0x%08X", in.getError(), out.getError());
             return;
         }
 

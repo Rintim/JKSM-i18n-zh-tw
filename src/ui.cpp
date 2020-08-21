@@ -26,12 +26,12 @@ int state = MAIN_MENU, prev = MAIN_MENU;
 static const std::string sharedDesc[] =
 {
     "主頁選單嘗試在啟動期間打開此儲存數據，如果 FS：OpenArchive 不返回錯誤主頁選單後啟動系統傳輸程式。主頁選單實際上並不使用此儲存數據，只是檢查它是否存在。",
-    "NAND JPEG/MPO 檔案和 phtcache.bin 從相機程式儲存在此。這也包含上傳數據.dat。",
-    "聲音程式中的 NAND M4A 檔案儲存在此。",
+    "NAND JPEG/MPO 档案和 phtcache.bin 從相機程式儲存在此。這也包含上傳數據.dat。",
+    "聲音程式中的 NAND M4A 档案儲存在此。",
     "適用於用於通知的悄然通訊內容儲存。",
-    "包含 idb. dat， idbt. dat， gamecoin. dat， ubll. lst， CFL_DB. dat， CFL_OldDB. dat.這些檔案包含 Miis 和一些與播放使用記錄相關的數據（包括緩存的 ICN 數據）。",
+    "包含 idb. dat， idbt. dat， gamecoin. dat， ubll. lst， CFL_DB. dat， CFL_OldDB. dat.這些档案包含 Miis 和一些與播放使用記錄相關的數據（包括緩存的 ICN 數據）。",
     "包含 bashotorya. dat 和 bashotorya2. dat 。",
-    "主頁選單的悄然連結檔案數據儲存。",
+    "主頁選單的悄然連結档案數據儲存。",
     "包含 版本列表.dat ，由主頁選單用於添加 7.0.0-13 的程式更新通知。"
 };
 
@@ -543,7 +543,7 @@ namespace ui
         drawTopBar("選擇一個資料夾");
         folderMenu.draw(40, 24, 0xFFFFFFFF, 320, false);
         gfx::frameStartBot();
-        gfx::drawText("\ue000 = 選擇\n\ue003 = 恢復\n\ue002 = 刪除\n\ue001 = 返回\nSelect = 檔案模式", 16, 16, 0xFFFFFFFF);
+        gfx::drawText("\ue000 = 選擇\n\ue003 = 恢復\n\ue002 = 刪除\n\ue001 = 返回\nSelect = 档案模式", 16, 16, 0xFFFFFFFF);
         gfx::frameEnd();
     }
 
